@@ -1,7 +1,13 @@
 package helloboot.toby;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.Objects;
 
+@RequestMapping("/hello")
+@RestController
 public class HelloController {
     private final HelloService helloService;
 
@@ -9,9 +15,8 @@ public class HelloController {
         this.helloService = helloService;
     }
 
+    @GetMapping
     public String hello(String name) {
-        SimpleHelloService helloService = new SimpleHelloService();
-
         return helloService.sayHello(Objects.requireNonNull(name));
     }
 }
