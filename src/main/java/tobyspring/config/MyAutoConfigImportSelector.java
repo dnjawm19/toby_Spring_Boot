@@ -16,18 +16,10 @@ public class MyAutoConfigImportSelector implements DeferredImportSelector {
 
     @Override
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
-//        Iterable<String> candidates = ImportCandidates.load(MyAutoConfiguration.class, classLoader);
-//        return StreamSupport.stream(candidates.spliterator(), false).toArray(String[]::new);
-
         List<String> autoConfig = new ArrayList<>();
 
         ImportCandidates.load(MyAutoConfiguration.class, classLoader).forEach(autoConfig::add);
 
         return autoConfig.toArray(new String[0]);
-
-//        return new String[] {
-//                "tobyspring.config.autoconfig.DispatcherServletConfig",
-//                "tobyspring.config.autoconfig.TomcatWebServerConfig"
-//        };
     }
 }
